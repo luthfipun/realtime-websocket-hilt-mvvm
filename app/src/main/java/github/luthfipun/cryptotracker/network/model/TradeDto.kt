@@ -5,13 +5,13 @@ import github.luthfipun.cryptotracker.domain.model.Trade
 
 data class TradeDto(
     @SerializedName("e")
-    var type: String,
+    var type: String?,
     @SerializedName("p")
-    var price: String,
+    var price: String?,
     @SerializedName("t")
-    var time: Long
+    var time: Long?
 ) {
     fun toTrade(): Trade {
-        return Trade(type, price, time)
+        return Trade(type.orEmpty(), price.orEmpty(), time ?: 0L)
     }
 }
